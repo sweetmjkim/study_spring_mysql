@@ -1,8 +1,7 @@
+package com.example.co_templates.quests.services;
 // - refer : DDL, DML, ERD
 // - callDao(/q/r/board/callDao) in QuestBoardController, QuestBoardService
 // - CRUD 작성 : board와 comments 적용
-
-package com.example.co_templates.quests.services;
 
 import java.util.HashMap;
 
@@ -14,6 +13,7 @@ import com.example.co_templates.utils.Commons;
 
 @Service
 public class QuestBoardService {
+    
     @Autowired
     ShareDao shareDao;
 

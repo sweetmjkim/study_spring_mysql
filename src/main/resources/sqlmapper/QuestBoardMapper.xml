@@ -1,9 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- - refer : DDL, DML, ERD -->
 <!-- - callDao(/q/r/board/callDao) in QuestBoardController, QuestBoardService -->
 <!-- - CRUD 작성 : board와 comments 적용 -->
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="BOARDS">
+<mapper namespace="QuestBoard">
 	<select id="selectBysearch" parameterType="Map" resultType="Map">
         SELECT *
         FROM BOARDS;
