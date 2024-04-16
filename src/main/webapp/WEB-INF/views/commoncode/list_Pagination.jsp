@@ -1,4 +1,4 @@
-<%@ page import="java.util.HashMap, java.util.ArrayList" %>
+<%@ page import="java.util.HashMap, java.util.ArrayList, com.example.co_templates.utils.Paginations" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +36,7 @@
     </nav>
 
     <!-- Main Content -->
-    <form action="/commonCode/list" method="get">
+    <form action="/commonCode/list_pagination" method="get">
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-8">
@@ -66,7 +66,8 @@
                     </thead>
                     <tbody>
                         <%
-                            ArrayList itemList = (ArrayList)request.getAttribute("itemList");
+                            HashMap result = (HashMap) request.getAttribute("result");
+                            ArrayList itemList = (ArrayList) result.get("resultList");
                             for(Object obj: itemList) {
                                 HashMap record = (HashMap) obj;
                         %>
@@ -86,17 +87,21 @@
             </div>
         </div>
         <!-- Pagination with buttons and query parameters -->
+        <%
+            Paginations paginations = (Paginations) result.get("paginations");
+        %>
         <nav aria-label="Page navigation">
+            <div><%= paginations.getTotalCount() %></div>
             <ul class="pagination justify-content-center">
-                <li class="page-item"><button class="page-link" type="submit" name="currentPage"
+                <li class="page-item"><button class="page-link" type="submit" name="page"
                         value="Previous">Previous</button></li>
-                <li class="page-item"><button class="page-link" type="submit" name="currentPage" value="1">1</button>
+                <li class="page-item"><button class="page-link" type="submit" name="page" value="1">1</button>
                 </li>
-                <li class="page-item"><button class="page-link" type="submit" name="currentPage" value="2">2</button>
+                <li class="page-item"><button class="page-link" type="submit" name="page" value="2">2</button>
                 </li>
-                <li class="page-item"><button class="page-link" type="submit" name="currentPage" value="3">3</button>
+                <li class="page-item"><button class="page-link" type="submit" name="page" value="3">3</button>
                 </li>
-                <li class="page-item"><button class="page-link" type="submit" name="currentPage"
+                <li class="page-item"><button class="page-link" type="submit" name="page"
                         value="Next">Next</button>
                 </li>
             </ul>

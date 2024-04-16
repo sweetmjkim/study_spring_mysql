@@ -33,5 +33,19 @@ public class CommonCodeController {
         modelAndView.addObject("dataMap", dataMap);
 
         return modelAndView;
-    }    
+    }
+
+    @GetMapping("/commonCode/list_Pagination")
+    public ModelAndView listPagination(ModelAndView modelAndView
+                        , @RequestParam HashMap<String, Object> dataMap
+                        , @RequestParam(name= "deleteIds", required = false) ArrayList<String> deleteIds) {
+        Object result = commonCodeService.selectSearchWithPagination(dataMap);
+
+        String viewPath = "/WEB-INF/views/commoncode/list_Pagination.jsp";
+        modelAndView.setViewName(viewPath);
+        modelAndView.addObject("result", result);
+        modelAndView.addObject("dataMap", dataMap);
+
+        return modelAndView;
+    }
 }
