@@ -17,13 +17,15 @@ public class CommonCodeController {
 
     @Autowired
     CommonCodeService commonCodeService;
+
     @GetMapping("/commonCode/list")
     public ModelAndView list(ModelAndView modelAndView
-                        , @RequestParam HashMap dataMap) {
+                        , @RequestParam HashMap<String, Object> dataMap
+                        , @RequestParam(name= "deleteIds", required = false) ArrayList<String> deleteIds) {
         ArrayList<HashMap<String, Object>> itemList = new ArrayList<HashMap<String, Object>>();
         // Call Service with Pure Java
         // CommonCodeService commonCodeService = new CommonCodeService();
-        itemList = commonCodeService.list(1);
+        itemList = (ArrayList<HashMap<String, Object>>) commonCodeService.selectMany(dataMap);
 
         String viewPath = "/WEB-INF/views/commoncode/list.jsp";
         modelAndView.setViewName(viewPath);

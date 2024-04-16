@@ -17,6 +17,13 @@ public class CommonCodeService {
     @Autowired
     Commons commons;
 
+    public Object selectMany(HashMap<String, Object> dataMap) {
+        // 여러개 가져오기
+        String sqlMapId = "CommonCode.selectBysearch";
+        Object list = shareDao.getList(sqlMapId, dataMap);
+        return list;
+    }
+
     public void callDao(HashMap<String, Object> dataMap){
         // 여러개 가져오기
         String sqlMapId = "CommonCode.selectBysearch";
