@@ -5,6 +5,7 @@
 		SELECT * 
 		FROM COMMON_CODE
 		where 1 = 1
+        <!-- and YEAR <![CDATA[ >  ]]> #{search} -->
 		<if test="search != '' and search != null">
 		and ${searchType} regexp #{search}
 		</if>
